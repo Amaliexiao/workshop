@@ -4,11 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Building {
-    private List<TempatureSensor> listOfTempSensors;
+    private String name;
+    private List<TemperatureSensor> listOfTempSensors;
     private List<CO2Sensor> listOfCO2Sensors;
     private List<VentilationActuator> listOfVentActuators;
 
-    public List<TempatureSensor> getListOfTempSensors() {
+    public Building(String name) {
+        this.name = name;
+        this.listOfTempSensors = new ArrayList<>();
+        this.listOfCO2Sensors = new ArrayList<>();
+        this.listOfVentActuators = new ArrayList<>();
+    }
+
+    public List<TemperatureSensor> getListOfTempSensors() {
         return listOfTempSensors;
     }
 
@@ -20,16 +28,37 @@ public class Building {
         return listOfVentActuators;
     }
 
-    public void addTempSensor(TempatureSensor tempSensor) {
-        listOfTempSensors.add(tempSensor);
+    public void addTempSensor(TemperatureSensor tempSensor) {
+            if (!listOfTempSensors.contains(tempSensor)) {
+                listOfTempSensors.add(tempSensor);
+            }
+            else {
+                System.out.println("This sensor has already been added to the building");
+            }
     }
     public void addCO2Sensor(CO2Sensor co2Sensor) {
+        if (!listOfCO2Sensors.contains(co2Sensor)) {
         listOfCO2Sensors.add(co2Sensor);
     }
-    public void addVentActuator(VentilationActuator ventActuator) {
-        listOfVentActuators.add(ventActuator);
+        else {
+            System.out.println("This sensor has already been added to the building");
+        }
     }
-    public void removeTempSensor() {
+    public void addVentActuator(VentilationActuator ventActuator) {
+        if (listOfVentActuators.contains(ventActuator)) {
+            listOfVentActuators.add(ventActuator);
+        }
+        else {
+            System.out.println("This sensor has already been added to the building");
+        }
 
+    }
+    public void removeTempSensor(TemperatureSensor tempSensor) {
+        if (listOfTempSensors.contains(tempSensor)) {
+            listOfTempSensors.remove(tempSensor);
+        }
+        else {
+            System.out.println("This sensor does not exist or has already been removed");
+        }
     }
 }
