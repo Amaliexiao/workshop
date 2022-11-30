@@ -5,6 +5,7 @@ import java.util.UUID;
 public abstract class Sensor {
     private UUID id;
     private double sensorValue;
+    private String name;
 
     public void setId(UUID id) {
         this.id = id;
