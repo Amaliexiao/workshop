@@ -78,4 +78,34 @@ public class Building {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+    @Override
+    public String toString(){
+       return getName() + " Contains " + listOfTempSensors.size() +
+               " Temp sensors, " + listOfCO2Sensors.size() + " CO2 sensors and "
+               +listOfVentActuators.size() +" Ventilation actuators";
+    }
+    public String stringListTempratureSensors(Building building){
+        String s = "";
+        for (TemperatureSensor entry : listOfTempSensors){
+            s += "Tempratur Sensor: " + entry.getId() + " has value: " + entry.getSensorValue();
+        }
+        return s;
+    }
+    public String stringListCo2Sensors(Building building){
+        String s = "";
+        for (CO2Sensor entry : listOfCO2Sensors){
+            s += "CO2 sensor: " + entry.getId() + " has value: " + entry.getSensorValue();
+        }
+        return s;
+    }
+    public String stringListActuators(Building building){
+        String s = "";
+        for (VentilationActuator entry : listOfVentActuators){
+            s += "Actuator: " + entry.getID() + " has value: " + entry.getPointValue();
+        }
+        return s;
+    }
 }
