@@ -45,7 +45,7 @@ public class Building {
         }
     }
     public void addVentActuator(VentilationActuator ventActuator) {
-        if (listOfVentActuators.contains(ventActuator)) {
+        if (!listOfVentActuators.contains(ventActuator)) {
             listOfVentActuators.add(ventActuator);
         }
         else {
@@ -61,4 +61,21 @@ public class Building {
             System.out.println("This sensor does not exist or has already been removed");
         }
     }
+    public void removeCO2Sensor(CO2Sensor co2Sensor) {
+        if (listOfTempSensors.contains(co2Sensor)) {
+            listOfTempSensors.remove(co2Sensor);
+        }
+        else {
+            System.out.println("This sensor does not exist or has already been removed");
+        }
+    }
+    public void removeVentActuator(VentilationActuator ventAcuator) {
+        if (listOfVentActuators.contains(ventAcuator)) {
+            listOfTempSensors.remove(ventAcuator);
+        }
+        else {
+            System.out.println("This sensor does not exist or has already been removed");
+        }
+    }
+
 }
