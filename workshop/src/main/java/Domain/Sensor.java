@@ -4,22 +4,21 @@ import java.util.UUID;
 
 public abstract class Sensor {
     private UUID id;
-    private double sensorValue;
     private String name;
 
     public void setId(UUID id) {
         this.id = id;
     }
 
-    public void setSensorValue(double sensorValue) {
-        this.sensorValue = sensorValue;
-    }
+//    public void setSensorValue(double sensorValue) {
+//        this.sensorValue = sensorValue;
+//    }
 
     public UUID getId() {
         return id;
     }
 
-    public double getSensorValue() {
-        return sensorValue;
-    }
+//    public double getSensorValue() {
+//        return sensorValue;
+//    }
 }

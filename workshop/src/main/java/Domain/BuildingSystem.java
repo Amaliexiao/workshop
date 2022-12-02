@@ -1,104 +1,47 @@
 package Domain;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 public class BuildingSystem implements IBuildingManagementSystem{
-
-    private List<Building> buildings = new ArrayList<>();
-
-    public void addBuilding(Building building){
-        buildings.add(building);
-    }
-
-    public void removeBuilding(Building building) {
-        buildings.remove(building);
-    }
-
-    public List<Building> getBuildings() {return buildings;}
-
+    private HashMap<UUID, String> buildings = new HashMap<>();
+    private Building building;
 
     @Override
-    public String toString(){
-        String s = "";
-        for (Building entry : buildings){
-            s += entry.getName() + " ";
-        }
-        return "The building system contains: "+s;
+    public Map<UUID,String> getBuildingInformation(){
+        return buildings;
     }
-    public UUID addTemperatureSensor(UUID buildingId, String name) {
-        if (!getBuildings().add())) {
-            building.getListOfTempSensors().add(tempSensor);
-        }
-        else {
-            System.out.println("This sensor has already been added to the building");
-        }
-        return buildingId;
+    @Override
+    public Map<UUID,String> getSensorInformation(UUID buildingId){
+        return building.getListOfSensors();
     }
-    public UUID addCo2Sensor(CO2Sensor co2Sensor, Building building) {
-        if (!building.getListOfCO2Sensors().contains(co2Sensor)) {
-            building.getListOfCO2Sensors().add(co2Sensor);
-        }
-        else {
-            System.out.println("This sensor has already been added to the building");
-        }
+    @Override
+    public Map<UUID, String> getActuatorInformation(UUID buildingId) {
+        return building.getListOfVentActuators();
     }
-    public void addVentActuator(VentilationActuator ventActuator, Building building) {
-        if (!building.getListOfVentActuators().contains(ventActuator)) {
-            building.getListOfVentActuators().add(ventActuator);
-        }
-        else {
-            System.out.println("This sensor has already been added to the building");
-        }
-
+    @Override
+    public UUID addTemperatureSensor(UUID buildingId, String name){
+        UUID nySensor = UUID.randomUUID();
+        building.addSensor(name,nySensor);
+        return nySensor;
     }
-    public void removeTempSensor(TemperatureSensor tempSensor, Building building) {
-        if (building.getListOfTempSensors().contains(tempSensor)) {
-            building.getListOfTempSensors().remove(tempSensor);
-        }
-        else {
-            System.out.println("This sensor does not exist or has already been removed");
-        }
+    @Override
+    public UUID addCo2Sensor(UUID buildingId, String name) {
+        UUID nySensor = UUID.randomUUID();
+        building.addSensor(name,nySensor);
+        return nySensor;
     }
-    public void removeCO2Sensor(CO2Sensor co2Sensor, Building building) {
-        if (building.getListOfCO2Sensors().contains(co2Sensor)) {
-            building.getListOfCO2Sensors().remove(co2Sensor);
-        }
-        else {
-            System.out.println("This sensor does not exist or has already been removed");
-        }
+    @Override
+    public void removeSensor(UUID buildingId, UUID sensorId) {
+        building.removeSensor(sensorId);
     }
-    public void removeVentActuator(VentilationActuator ventAcuator, Building building) {
-        if (building.getListOfVentActuators().contains(ventAcuator)) {
-            building.getListOfVentActuators().remove(ventAcuator);
-        }
-        else {
-            System.out.println("This sensor does not exist or has already been removed");
-        }
+    @Override
+    public UUID addVentilationActuator(UUID buildingId, String name) {
+        UUID nyId = UUID.randomUUID();
+        building.addVentActuator(name,nyId);
+        return nyId;
     }
-
-
-
-    public String stringListTempratureSensors(Building building){
-        String s = "";
-        for (TemperatureSensor entry : building.getListOfTempSensors()){
-            s += "Tempratur Sensor: " + entry.getId() + " has value: " + entry.getSensorValue();
-        }
-        return s;
-    }
-    public String stringListCo2Sensors(Building building){
-        String s = "";
-        for (CO2Sensor entry : building.getListOfCO2Sensors()){
-            s += "CO2 sensor: " + entry.getId() + " has value: " + entry.getSensorValue();
-        }
-        return s;
-    }
-    public String stringListActuators(Building building){
-        String s = "";
-        for (VentilationActuator entry : building.getListOfVentActuators()){
-            s += "Actuator: " + entry.getID() + " has value: " + entry.getPointValue();
-        }
-        return s;
+    @Override
+    public void removeActuator(UUID buildingId, UUID actuatorId) {
+        building.removeVentActuator(actuatorId);
     }
 }

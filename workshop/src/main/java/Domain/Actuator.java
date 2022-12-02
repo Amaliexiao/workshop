@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public abstract class Actuator {
     private     UUID    id;
-    private     double  pointValue;
+//    private     double  pointValue;
 
     public UUID getID(){
         return id;
@@ -13,11 +13,11 @@ public abstract class Actuator {
         this.id = id;
     }
 
-    public double getPointValue() {
-        return pointValue;
-    }
+//    public double getPointValue() {
+//        return pointValue;
+//    }
 
-    public void setPointValue(double pointValue) {
-        this.pointValue = pointValue;
-    }
+//    public void setPointValue(double pointValue) {
+//        this.pointValue = pointValue;
+//    }
 }

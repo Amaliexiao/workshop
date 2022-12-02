@@ -3,11 +3,11 @@ package Domain;
 import java.util.UUID;
 
 public class TemperatureSensor extends Sensor{
+    String name;
 
-    public TemperatureSensor(double sensorValue) {
-        UUID tempSensUUID = UUID.randomUUID();
-        super.setId(tempSensUUID);
-        super.setSensorValue(sensorValue);
+    public TemperatureSensor(UUID id, String name) {
+        this.name = name;
+        super.setId(id);
     }
 
 }

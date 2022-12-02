@@ -3,10 +3,10 @@ package Domain;
 import java.util.UUID;
 
 public class VentilationActuator extends Actuator{
+    private String name;
 
-    public VentilationActuator(double pointValue) {
-        UUID ventActuator = UUID.randomUUID();
-        this.setPointValue(pointValue);
-        this.setID(ventActuator);
+    public VentilationActuator(UUID id, String name) {
+        this.setID(id);
+        this.name = name;
     }
 }
